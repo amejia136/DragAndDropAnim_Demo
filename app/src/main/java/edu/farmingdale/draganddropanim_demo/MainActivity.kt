@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
 
 // This should be completed in a group setting
 
-// ToDo 4: Replace the command right with a image or icon
 // ToDo 5: Make this works in landscape mode only
 // ToDo 6: Rotate the rect around itself
 // ToDo 7: Move - translate the rect horizontally and vertically
