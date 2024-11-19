@@ -4,6 +4,7 @@ package edu.farmingdale.draganddropanim_demo
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.graphics.drawable.Drawable
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -35,7 +36,9 @@ import androidx.compose.ui.draganddrop.DragAndDropTarget
 import androidx.compose.ui.draganddrop.DragAndDropTransferData
 import androidx.compose.ui.draganddrop.mimeTypes
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -48,7 +51,8 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
 
         Row(
             modifier = modifier
-                .fillMaxWidth().weight(0.2f)
+                .fillMaxWidth()
+                .weight(0.2f)
         ) {
             val boxCount = 4
             var dragBoxIndex by remember {
@@ -85,11 +89,7 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                         enter = scaleIn() + fadeIn(),
                         exit = scaleOut() + fadeOut()
                     ) {
-                        Text(
-                            text = "Right",
-                            fontSize = 40.sp,
-                            color = Color.Red,
-                            fontWeight = FontWeight.Bold,
+                       ,
 
                             modifier = Modifier
                                 .fillMaxSize()
@@ -121,7 +121,7 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                 .background(Color.Red)
 
         ) {
-                drawCircle(Color.Green, radius = 50f, center = Offset(100f, 100f))
+                drawRect(Color.Green, topLeft = Offset(100f, 100f), size = Size(100f,100f))
        }
     }
 }

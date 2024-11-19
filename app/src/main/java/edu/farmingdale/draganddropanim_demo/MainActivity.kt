@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
 
 
 // This should be completed in a group setting
-// ToDo 1: Analyze the requirements for Individual Project 3
+
 // ToDo 2: Show the DragAndDropBoxes composable
 // ToDo 3: Change the circle to a rect
 // ToDo 4: Replace the command right with a image or icon
@@ -46,7 +47,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(text = "Hello $name!", modifier = modifier)
+        DragAndDropBoxes()
+
 }
 
 @Preview(showBackground = true)
