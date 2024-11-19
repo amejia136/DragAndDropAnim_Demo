@@ -91,8 +91,8 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                         enter = scaleIn() + fadeIn(),
                         exit = scaleOut() + fadeOut()
                     ) {
-                        Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "",
-
+                        Icon(imageVector = Icons.Default.ArrowForward,
+                            contentDescription = "",
                             modifier = Modifier
                                 .fillMaxSize()
                                 .dragAndDropSource {
