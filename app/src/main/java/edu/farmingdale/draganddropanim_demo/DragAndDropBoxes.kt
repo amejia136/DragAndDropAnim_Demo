@@ -38,6 +38,7 @@ import androidx.compose.ui.draganddrop.mimeTypes
 import androidx.compose.foundation.Canvas
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Icon
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -116,14 +117,15 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
         }
 
 
-        Canvas(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.8f)
                 .background(Color.Red)
 
         ) {
-                drawRect(Color.Green, topLeft = Offset(100f, 100f), size = Size(100f,100f))
+               Icon(imageVector = Icons.Default.Face, contentDescription = "Face",
+                   modifier = Modifier.padding(5.dp))
        }
     }
 }
