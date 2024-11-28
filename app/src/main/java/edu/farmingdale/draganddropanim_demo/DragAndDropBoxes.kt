@@ -171,5 +171,6 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
             Text("Reset")
         }
     }
+
 }
 
