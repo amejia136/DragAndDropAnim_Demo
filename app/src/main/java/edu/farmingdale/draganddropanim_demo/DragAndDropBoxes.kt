@@ -6,6 +6,10 @@ import android.content.ClipData
 import android.content.ClipDescription
 import android.graphics.drawable.Icon
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntOffsetAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -36,20 +40,40 @@ import androidx.compose.ui.draganddrop.DragAndDropTarget
 import androidx.compose.ui.draganddrop.DragAndDropTransferData
 import androidx.compose.ui.draganddrop.mimeTypes
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.offset
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Icon
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
 @Composable
 fun DragAndDropBoxes(modifier: Modifier = Modifier) {
+    val isPlaying = false
+    val rot by animateFloatAsState(
+        targetValue = if (isPlaying) 360f else 0f,
+        animationSpec = tween(
+            durationMillis = 2000,
+            easing = LinearEasing
+        )
+    )
+
+    val offset by animateIntOffsetAsState(
+        targetValue = if (isPlaying) IntOffset(100, 100) else IntOffset(0, 0), // Target positions
+        animationSpec = tween(
+            durationMillis = 1500,
+            easing = LinearEasing
+        )
+    )
+
     Column(modifier = Modifier.fillMaxSize()) {
 
         Row(
@@ -125,7 +149,11 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
 
         ) {
                Icon(imageVector = Icons.Default.Face, contentDescription = "Face",
-                   modifier = Modifier.padding(5.dp))
+                   modifier = Modifier
+                       .padding(5.dp)
+                       .rotate(rot)
+                       .offset(offset.x.dp, offset.y.dp))
+
        }
     }
 }
