@@ -44,7 +44,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -58,6 +60,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun DragAndDropBoxes(modifier: Modifier = Modifier) {
     val isPlaying = false
+    var offsetTwo by remember {
+        mutableStateOf(IntOffset(0,0)) }
     val rot by animateFloatAsState(
         targetValue = if (isPlaying) 360f else 0f,
         animationSpec = tween(
@@ -155,6 +159,17 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                        .offset(offset.x.dp, offset.y.dp))
 
        }
+        Button(
+            onClick = {
+                offsetTwo = IntOffset(0,0)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(0.2f)
+                .background(Color.Blue)
+        ) {
+            Text("Reset")
+        }
     }
 }
 
